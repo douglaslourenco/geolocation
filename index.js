@@ -31,7 +31,7 @@ var options = {
     console.log("longitude:" + longitude);
 
     Email.send({
-        SecureToken : "d0ea730b-7800-4a5c-aab7-7dcf61485a32",
+        SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
         To : 'lourenco.douglas02@gmail.com',
         From : "lourenco.douglas02@gmail.com",
         Subject : `latitude e longitude`,

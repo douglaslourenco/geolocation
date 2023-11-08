@@ -1,44 +1,14 @@
-var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0,
-  };
+export var latitude;
+export var longitude;
 
-  var longitude;
-  
-  function success(pos) {
-    var crd = pos.coords;
+function getPosition () {
+  navigator.geolocation.watchPosition(function (position) {
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
 
-    console.log("Sua posição atual é:");
-    console.log("Latitude : " + crd.latitude);
-    console.log("Longitude: " + crd.longitude);
-    console.log("Mais ou menos " + crd.accuracy + " metros.");
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  });
+}
 
-    latitude = crd.latitude;
-    longitude = crd.longitude;
-    pegarLongitude();
-  }
-  
-  function error(err) {
-    console.warn("ERROR(" + err.code + "): " + err.message);
-  }
-  
-  
-  navigator.geolocation.getCurrentPosition(success, error, options);
-  
-  function pegarLongitude() {
-    console.log("latitude:" + latitude);
-    console.log("longitude:" + longitude);
-
-    Email.send({
-        SecureToken : "39d011fc-34f4-4f01-9ed6-3823b962556e",
-        To : 'lourenco.douglas02@gmail.com',
-        From : "lourenco.douglas02@gmail.com",
-        Subject : `latitude e longitude`,
-        Body : `latitude: ${latitude} longitude: ${longitude}`
-    }).then(
-      message => alert(message)
-    );
-  }
-
-  
+getPosition();

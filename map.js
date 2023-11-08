@@ -1,5 +1,5 @@
 import { MAP_KEY } from './config.js';
-import { latitude, longitude } from './index.js';
+import { latitude, longitude } from './getPosition.js';
 
 if (latitude == undefined) {
     console.log("map: "+ latitude, longitude);
